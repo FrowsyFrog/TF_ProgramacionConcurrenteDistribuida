@@ -22,6 +22,10 @@ var (
 )
 
 func predecirHandler(res http.ResponseWriter, req *http.Request) {
+	res.Header().Set("Access-Control-Allow-Origin", "*")
+	res.Header().Set("Access-Control-Allow-Methods", "GET")
+	res.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
 	// Get Client Array
 	log.Println("Llamada a endpoint /predecir")
 	aValue := req.FormValue("arrayValue")
