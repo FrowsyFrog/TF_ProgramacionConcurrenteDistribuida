@@ -78,7 +78,7 @@ func (lr *LinearRegression) Predict(X []float64) ([]float64, error) {
 	if lr.isTrained {
 		predictions := make([]float64, len(X))
 		for i := range X {
-			predictions[i] = math.Round(lr.slope*X[i]+lr.intercept*math.Pow(10, 6)) / math.Pow(10, 6)
+			predictions[i] = math.Round((lr.slope*X[i]+lr.intercept)*100) / 100
 		}
 		return predictions, nil
 	}
