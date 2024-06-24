@@ -34,8 +34,6 @@ func predecirHandler(res http.ResponseWriter, req *http.Request) {
 
 	// Get Predictions from Server
 	nodeAddr := hostAddress + getNodePort()
-	fmt.Println("---------------------------------------------------")
-	fmt.Println(nodeAddr)
 	predictionsArr := makePredictionRequest(nodeAddr, arr)
 	fmt.Println("Predicciones: ", predictionsArr)
 
