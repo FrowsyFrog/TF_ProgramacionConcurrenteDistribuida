@@ -86,11 +86,8 @@ func readArray(strArr string) []float64 {
 
 func discoverIP() string {
 	interfaces, _ := net.Interfaces()
-	fmt.Println("Tamaño de Interfaces:", len(interfaces))
 	for _, iface := range interfaces {
-		fmt.Println("Nombre de interfaz:", iface.Name)
 		if strings.HasPrefix(iface.Name, "Ethernet") {
-			fmt.Println("¡Tiene prefijo 'Ethernet'!")
 			addrs, _ := iface.Addrs()
 			for _, addr := range addrs {
 				switch t := addr.(type) {
