@@ -9,6 +9,7 @@ import (
 	"math"
 	"net"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 	"sync"
@@ -20,12 +21,13 @@ type LinearRegression struct {
 	isTrained bool
 }
 
-const (
-	port = 8000
-)
+// const (
+// 	port = 8000
+// )
 
 var (
 	hostAddr string
+	port     int
 	lr       LinearRegression
 )
 
@@ -144,6 +146,7 @@ func initializeTraining() {
 func main() {
 	hostAddr = discoverIP()
 	hostAddr = strings.TrimSpace(hostAddr)
+	port = assignPort()
 	fmt.Printf("Ejecutando en la dirección %s:%d\n", hostAddr, port)
 
 	registerServer()
@@ -165,6 +168,15 @@ func discoverIP() string {
 		}
 	}
 	return "127.0.0.1"
+}
+
+func assignPort() int {
+	if len(os.Args) < 2 {
+		fmt.Println("Por favor especificar el puerto a utilizar.")
+		os.Exit(1)
+	}
+	nPort, _ := strconv.Atoi(os.Args[1])
+	return nPort
 }
 
 func registerServer() {

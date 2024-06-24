@@ -86,8 +86,11 @@ func readArray(strArr string) []float64 {
 
 func discoverIP() string {
 	interfaces, _ := net.Interfaces()
+	fmt.Println("Tamaño de Interfaces:", len(interfaces))
 	for _, iface := range interfaces {
+		fmt.Println("Nombre de interfaz:", iface.Name)
 		if strings.HasPrefix(iface.Name, "Ethernet") {
+			fmt.Println("¡Tiene prefijo 'Ethernet'!")
 			addrs, _ := iface.Addrs()
 			for _, addr := range addrs {
 				switch t := addr.(type) {
@@ -108,6 +111,9 @@ func requestHandler() {
 }
 
 func main() {
-	hostAddress = discoverIP()
+	// hostAddress = discoverIP()
+	// hostAddress, _ := os.Hostname()
+	hostAddress = "localhost"
+	fmt.Printf("Ejecutando API en %s%s\n", hostAddress, apiPort)
 	requestHandler()
 }
