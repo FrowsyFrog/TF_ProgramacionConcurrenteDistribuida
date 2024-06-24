@@ -111,9 +111,6 @@ func requestHandler() {
 }
 
 func main() {
-	// hostAddress = discoverIP()
-	// hostAddress, _ := os.Hostname()
-	hostAddress = "localhost"
-	fmt.Printf("Ejecutando API en %s%s\n", hostAddress, apiPort)
+	hostAddress = discoverIP()
 	requestHandler()
 }

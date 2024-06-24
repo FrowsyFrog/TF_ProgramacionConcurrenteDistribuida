@@ -21,10 +21,6 @@ type LinearRegression struct {
 	isTrained bool
 }
 
-// const (
-// 	port = 8000
-// )
-
 var (
 	hostAddr string
 	port     int
