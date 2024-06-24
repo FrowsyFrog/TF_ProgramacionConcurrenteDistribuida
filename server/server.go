@@ -134,7 +134,7 @@ func ReadDataset(url string) ([]float64, []float64) {
 }
 
 func initializeTraining() {
-	X, y := ReadDataset("https://raw.githubusercontent.com/FrowsyFrog/T4_ProgramacionConcurrentDistribuida/main/train.csv")
+	X, y := ReadDataset("https://raw.githubusercontent.com/FrowsyFrog/TF_ProgramacionConcurrenteDistribuida/main/train.csv")
 	lr.Fit(X, y)
 	fmt.Println("¡Entrenamiento completado!")
 }
